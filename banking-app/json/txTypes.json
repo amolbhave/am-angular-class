@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "typeName": "Credit"
+  },
+  {
+    "id": "2",
+    "typeName": "Debit"
+  },
+  {
+    "id": "3",
+    "typeName": "Deposit"
+  },
+  {
+    "id": "4",
+    "typeName": "Withdrawal"
+  }
+]

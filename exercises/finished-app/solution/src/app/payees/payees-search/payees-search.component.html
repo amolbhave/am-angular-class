@@ -1,0 +1,51 @@
+<form (submit)="handleSubmit($event)">
+  <div class="form-group">
+    <label for="id-payee-name">Payee Name: </label>
+    <input type="text"
+           name="formPayeeName"
+           id="id-payee-name"
+           class="form-control"
+           [(ngModel)]="criteria.payeeName"
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="id-city">City: </label>
+    <input type="text"
+           name="formCity"
+           id="id-city"
+           class="form-control"
+           [(ngModel)]="criteria.city"
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="id-state">State: </label>
+    <input type="text"
+           name="formState"
+           id="id-state"
+           class="form-control"
+           [(ngModel)]="criteria.state"
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="id-category">Category: </label>
+    <select-categories
+      id="id-category"
+      (pickCategory)="handlePickCategory($event)"
+      name="category"></select-categories>
+
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-primary" (click)="handleClick(criteria)">Search!</button>
+  </div>
+</form>
+
+<!-- Uncomment to check search criteria -->
+<!--
+<div>
+  <p>You are searching on: {{ criteria | json }}</p>
+</div>
+-->

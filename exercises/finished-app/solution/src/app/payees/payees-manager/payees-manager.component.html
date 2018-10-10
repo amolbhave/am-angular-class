@@ -1,0 +1,33 @@
+<h2>Payees</h2>
+
+<div class="row">
+  <div class="col mb-1">
+    <a routerLink="search">Search</a> |
+    <a routerLink="list">Browse</a>
+  </div>
+</div>
+
+<div class="row bump-down">
+  <div class="col">
+
+    <router-outlet></router-outlet>
+
+    <!--     <div *ngIf="showSearch">
+          <payees-search (searchPayees)="handleSearchPayees($event)"></payees-search>
+        </div>
+
+        <div *ngIf="showList">
+          <payees-list [payees]="results"></payees-list>
+        </div>
+     -->
+    <!--   <div [style.display]="showSearch">Search will go here</div>
+      <div [style.display]="showList">List will go here</div>
+
+      <div [class.hide]="hideSearch">Search will go here</div>
+      <div [class.hide]="hideList">List will go here</div>
+
+      <div *ngIf="!hideSearch">Search will go here</div>
+      <div *ngIf="!hideList">List will go here</div>
+     -->
+  </div>
+</div>

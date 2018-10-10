@@ -1,0 +1,29 @@
+<table class="table table-striped table-hover"
+       *ngIf="payees?.length > 0; else noResults">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Category</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let payee of payees">
+    <td>{{ payee.payeeName }}</td>
+    <td>{{ payee.address?.city }}</td>
+    <td>{{ payee.address?.state }}</td>
+    <td>{{ payee.category.categoryName }}</td>
+    <td>
+      <button (click)="handleSelectPayee(payee)" class="btn btn-secondary" type="button">View</button> &nbsp;
+      <button (click)="handleEditClick(payee)" class="btn btn-danger" type="button">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<ng-template #noResults>
+  <div *ngIf="payees?.length === 0">
+    <h2>No results found</h2>
+  </div>
+</ng-template>

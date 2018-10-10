@@ -1,0 +1,10 @@
+<div class="card" *ngIf="payee">
+  <div class="card-header bg-primary text-light">
+    {{ payee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">{{ payee.payeeName }}</li>
+    <li class="list-group-item">{{ payee.address?.city }}, {{ payee.address?.state }}</li>
+    <li class="list-group-item">Category: {{ payee.category.categoryName }}</li>
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+<form>
+  <div class="form-group">
+    <label for="id-payee-name">Payee Name:</label>
+    <input [(ngModel)]="editedPayee.payeeName" type="text" name="form-payeeName" id="id-payee-name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="id-street">Street</label>
+    <input [(ngModel)]="editedPayee.address.street" type="text" name="form-street" id="id-street" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="id-city">City</label>
+    <input [(ngModel)]="editedPayee.address.city" type="text" name="form-city" id="id-city" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="id-state">State</label>
+    <input [(ngModel)]="editedPayee.address.state" type="text" name="form-state" id="id-state" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="id-zip">Zip Code</label>
+    <input [(ngModel)]="editedPayee.address.zip" type="text" name="form-zip" id="id-zip" class="form-control">
+  </div>
+  <select-categories></select-categories>
+</form>

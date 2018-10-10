@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "accountTypeName": "Checking",
+    "interestRate": 0
+  },
+  {
+    "id": "2",
+    "accountTypeName": "Savings",
+    "interestRate": 0.02
+  },
+  {
+    "id": "3",
+    "accountTypeName": "Certificate of Deposit",
+    "interestRate": 0.05
+  },
+  {
+    "id": "4",
+    "accountTypeName": "Investment",
+    "interestRate": 0
+  }
+]
