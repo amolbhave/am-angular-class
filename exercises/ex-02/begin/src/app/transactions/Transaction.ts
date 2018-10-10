@@ -1,5 +1,4 @@
 import TxTypes from './TxTypes';
-import { Payee } from '../payees/Payee';
 import { Category } from '../categories/Category';
 import { Person } from '../people/Person';
 import { Account } from '../shared/Account';
@@ -14,7 +13,7 @@ export interface Transaction extends HasId {
   txType: TxTypes | string;
   txDate: string;
   amount: number;
-  payee?: Payee;
+  payee?: {[key: string]: any};
   category?: Category;
   person?: Person;
   account?: Account;
