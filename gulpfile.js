@@ -12,14 +12,14 @@ let home            = path.resolve( __dirname ),
     src             = 'src/',
     app             = 'app/',
     appSrc          = `${home}/banking-app/${src}`,
-    appAssets       = `${appSrc}assets`,
+    appAssets       = `${appSrc}assets/`,
     appApp          = `${appSrc}${app}`,
     exercises       = `${home}/exercises/`,
     begin           = '/begin/',
     solution        = '/solution/',
     instructions    = '-instructions.md',
     instructionsOut = 'instructions.html',
-    files           = '**/*.+(ts|js|html|css)',
+    files           = '**/*.+(ts|js|html|css|gif)',
     notData         = '!' + appSrc + 'environments/**/*',
     allFiles        = '**/*';
 
@@ -34,17 +34,21 @@ gulp.task( 'start-exercise', [ 'clean-all' ], function() {
         .pipe( gulp.dest( appSrc ) );
     console.log( 'Testing ' + baseDir + options.src + instructions );
     if ( fs.existsSync( baseDir + options.src + instructions ) ) {
-      console.log( 'Building instructions....' );
+      console.log( 'Building instructions....: ', baseDir + options.src + instructions );
       gulp.src( baseDir + options.src + instructions )
           .pipe( markdown() )
           .pipe( wrap( { src: exercises + 'instructions-template.html' } ) )
           .pipe( concat( instructionsOut ) )
-          .pipe( gulp.dest( appAssets ) );
+          .pipe( gulp.dest( appAssets ) )
+          .pipe( gulp.dest( appAssets + 'doc' ) );
 
       gulp.src( exercises + 'instructions.css' )
-          .pipe( gulp.dest( appAssets ) );
+          .pipe( gulp.dest( appAssets ) )
+          .pipe( gulp.dest( appAssets + 'doc' ) );
 
-      opn( 'http://localhost:4200/assets/' + instructionsOut );
+      console.log(`\n\n *** Instructions available at file://${appAssets}doc/${instructionsOut} *** \n\n`);
+      // console.log( 'opening: ', `file://${appAssets}doc/${instructionsOut}` );
+      // opn( `file://${appAssets}doc/${instructionsOut}` );
 
       // opn seems to hang up gulp, this exits after a (relatively safe?) 2 seconds
       setTimeout( () => {
@@ -88,8 +92,8 @@ gulp.task( 'clean-begin', () => {
 } );
 
 gulp.task( 'clean-src', () => {
-  console.log( 'Cleaning: ', [ appApp + allFiles, notData ] );
-  return del( [ appApp + allFiles, notData ] );
+  console.log( 'Cleaning: ', [ appApp + allFiles, appAssets + files, notData ] );
+  return del( [ appApp + allFiles, appAssets, notData ] );
 } );
 
 gulp.task( 'clean-all', [ 'clean-src' ] );

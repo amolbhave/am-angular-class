@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header bg-warning">{{ action }}</div>
+  <div class="card-body">
+    <form (submit)="handleSubmit(newCat)">
+      <div class="form-group">
+        <label for="category-name">Category Name:</label>
+        <input
+          [(ngModel)]="newCat.categoryName"
+          type="text" class="form-control"
+          id="category-name"
+          name="categoryName">
+      </div>
+      <div class="form-group">
+        <label for="category-type">Category Type:</label>
+        <input
+          [(ngModel)]="newCat.categoryType"
+          type="text" class="form-control"
+          id="category-type"
+          name="categoryType">
+      </div>
+      <div class="text-right">
+        <button type="submit" class="btn btn-warning">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

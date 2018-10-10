@@ -1,0 +1,13 @@
+<!-- Add a template below which displays spinner.gif (in the assets folder)
+     Display the template if payee is undefined -->
+
+<div class="card" *ngIf="payee">
+  <div class="card-header bg-primary text-light">
+    {{ payee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">{{ payee.payeeName }}</li>
+    <li class="list-group-item">{{ payee.address.street }}</li>
+    <li class="list-group-item">{{ payee.address.city }}, {{ payee.address.state }}</li>
+  </ul>
+</div>

@@ -1,0 +1,11 @@
+<!-- Add an *ngIf directive to only display this component if payee is populated -->
+<div class="card">
+  <div class="card-header bg-primary text-light">
+    {{ payee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">{{ payee.payeeName }}</li>
+    <li class="list-group-item">{{ payee.address.street }}</li>
+    <li class="list-group-item">{{ payee.address.city }}, {{ payee.address.state }}</li>
+  </ul>
+</div>

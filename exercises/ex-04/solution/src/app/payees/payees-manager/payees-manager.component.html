@@ -1,0 +1,14 @@
+<!--
+Replace this code with code which will display the salient features of a Payee
+At a minimum, the name, address, city, and state of the Payee.
+-->
+<div class="card">
+  <div class="card-header bg-primary text-light">
+    {{ payee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">{{ payee.payeeName }}</li>
+    <li class="list-group-item">{{ payee.address.street }}</li>
+    <li class="list-group-item">{{ payee.address.city }}, {{ payee.address.state }}</li>
+  </ul>
+</div>

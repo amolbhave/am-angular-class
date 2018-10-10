@@ -10,6 +10,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { HomeNavbarComponent } from './home-navbar/home-navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DemosModule } from './demos/demos.module';
 
 @NgModule( {
   declarations: [
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
     PeopleModule,
     TransactionsModule,
     CategoriesModule,
+    DemosModule,
     AppRoutingModule
   ],
   providers: [],
