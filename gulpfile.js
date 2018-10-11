@@ -64,7 +64,7 @@ gulp.task( 'start-exercise', [ 'clean-all' ], function() {
 gulp.task( 'show-solution', [ 'clean-all' ], function() {
   if ( options.src ) {
     gulp.src( exercises + options.src + solution + src + files )
-        .pipe( gulp.dest( src ) );
+        .pipe( gulp.dest( appSrc ) );
   }
 } );
 

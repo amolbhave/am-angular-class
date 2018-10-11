@@ -39,6 +39,7 @@ testem.log
 Thumbs.db
 banking-app/.idea
 banking-app/node_modules
+banking-app/src/data
 banking-app/src/app/**/*.css
 banking-app/src/app/**/*.js
 banking-app/src/app/**/*.ts

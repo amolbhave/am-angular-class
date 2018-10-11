@@ -1,0 +1,26 @@
+<div class="card" *ngIf="selectedPayee; else spinner">
+  <div class="card-header bg-primary text-light">
+    {{ selectedPayee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <!-- Apply the category-income class to the list item below if the payee's categoryId is below 100 -->
+    <li class="list-group-item" [class.categoryIncome]="selectedPayee.categoryId < 100">{{ selectedPayee.payeeName }}</li>
+    <li class="list-group-item">{{ selectedPayee.address?.street }}</li>
+
+    <!-- Add a style so that your favorite state appears in red -->
+    <li class="list-group-item">{{ selectedPayee.address?.city }}, <span [style.color]="selectedPayee.address?.state === 'NJ' ? 'red' : 'black'">{{ selectedPayee.address?.state }}</span></li>
+  </ul>
+</div>
+
+<div class="mt-1">
+  <!-- Disable this button if we are at the first element in the list -->
+  <button type="button" (click)="handlePrevious(selectedPayee)" class="btn btn-primary" [class.disabled]="this.firstPayee">Previous</button>
+  &nbsp;
+  <!-- Disable this button if we are at the last item in the list -->
+  <button type="button" (click)="handleNext(selectedPayee)" class="btn btn-primary" [class.disabled]="this.lastPayee">Next</button>
+</div>
+
+<ng-template #spinner>
+  <h2>Waiting...</h2>
+  <img src="../../../assets/spinner.gif"/>
+</ng-template>
