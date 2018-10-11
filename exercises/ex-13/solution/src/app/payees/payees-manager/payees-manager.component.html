@@ -1,0 +1,9 @@
+<payee-detail
+  [payee]="selectedPayee"
+  (onNextPayee)="handleNext($event)"
+  (onPreviousPayee)="handlePrevious($event)"
+  *ngIf="selectedPayee; else spinner"></payee-detail>
+<ng-template #spinner>
+  <h2>Waiting...</h2>
+  <img src="../../../assets/spinner.gif"/>
+</ng-template>

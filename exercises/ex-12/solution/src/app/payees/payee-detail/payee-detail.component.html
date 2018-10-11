@@ -1,0 +1,15 @@
+<div class="card">
+
+  <div class="card-header" [ngClass]="getCardColor(payee.categoryId)">
+    {{ payee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" [class.categoryIncome]="payee.categoryId < 100">{{ payee.payeeName }}
+    </li>
+    <li class="list-group-item">{{ payee.category?.categoryName }}</li>
+    <li class="list-group-item">{{ payee.address?.street }}</li>
+
+    <li class="list-group-item">{{ payee.address?.city }},
+      <span [ngStyle]="getStateColor(payee.address?.state)">{{ payee.address?.state }}</span></li>
+  </ul>
+</div>
