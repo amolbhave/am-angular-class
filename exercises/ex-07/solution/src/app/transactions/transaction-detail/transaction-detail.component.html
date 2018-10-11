@@ -1,0 +1,12 @@
+<div class="card" *ngIf="displayTx">
+  <div class="card-header">Paid {{ displayTx.amount | abs | currency }} to {{ displayTx.payee.payeeName }}</div>
+  <ul class="list-group">
+    <li class="list-group-item">Payee: {{ displayTx.payee.payeeName }}</li>
+    <li class="list-group-item">Amount: <span [style.color]="displayTx.amount < 0 ? 'red' : 'green'">{{ displayTx.amount | abs | currency }}</span>
+    </li>
+    <li class="list-group-item">Date: {{ displayTx.txDate | date }}</li>
+    <li class="list-group-item">Category: {{ displayTx.category.categoryName }}</li>
+    <li class="list-group-item">Cleared? {{ displayTx.cleared ? 'yes' : 'no'}}</li>
+    <li class="list-group-item"></li>
+  </ul>
+</div>

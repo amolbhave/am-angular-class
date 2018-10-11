@@ -1,0 +1,21 @@
+<div class="card" *ngIf="selectedPayee; else spinner">
+  <div class="card-header bg-primary text-light">
+    {{ selectedPayee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">{{ selectedPayee.payeeName }}</li>
+    <li class="list-group-item">{{ selectedPayee.address.street }}</li>
+    <li class="list-group-item">{{ selectedPayee.address.city }}, {{ selectedPayee.address.state }}</li>
+  </ul>
+</div>
+
+<!-- In the <div> below, add two buttons for next and previous actions.
+     Hook them up to the event handlers you just wrote in the component class.
+     Do not forget to pass the right arguments to the handler. -->
+<div class="mt-1">
+</div>
+
+<ng-template #spinner>
+  <h2>Waiting...</h2>
+  <img src="../../../assets/spinner.gif"/>
+</ng-template>
