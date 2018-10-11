@@ -1,0 +1,32 @@
+<div class="card" *ngIf="selectedPayee; else spinner">
+
+  <div class="card-header" [ngClass]="getCardColor(selectedPayee.categoryId)">
+    {{ selectedPayee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" [class.categoryIncome]="selectedPayee.categoryId < 100">{{ selectedPayee.payeeName }}
+    </li>
+    <li class="list-group-item">{{ selectedPayee.category?.categoryName }}</li>
+    <li class="list-group-item">{{ selectedPayee.address?.street }}</li>
+
+    <li class="list-group-item">{{ selectedPayee.address?.city }},
+      <span [ngStyle]="getStateColor(selectedPayee.address?.state)">{{ selectedPayee.address?.state }}</span></li>
+  </ul>
+</div>
+
+<div class="mt-1">
+  <button type="button"
+          (click)="handlePrevious(selectedPayee)"
+          class="btn btn-primary"
+          [class.disabled]="this.firstPayee">Previous
+  </button>
+  &nbsp;
+  <button type="button" (click)="handleNext(selectedPayee)" class="btn btn-primary" [class.disabled]="this.lastPayee">
+    Next
+  </button>
+</div>
+
+<ng-template #spinner>
+  <h2>Waiting...</h2>
+  <img src="../../../assets/spinner.gif"/>
+</ng-template>
