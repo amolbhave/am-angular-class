@@ -1,0 +1,9 @@
+<div class="card bg-info"
+     *ngIf="category">
+  <div class="card-header">{{category.categoryName}}</div>
+  <ul class="list-group">
+    <li class="list-group-item">Category ID: {{ category.id }}</li>
+    <li class="list-group-item">Category Name: {{ category.categoryName }}</li>
+    <li class="list-group-item">Category Type: {{ category.categoryType }}</li>
+  </ul>
+</div>
