@@ -1,0 +1,34 @@
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+    <th (click)="handleSort('payeeName')">Payee Name</th>
+    <th (click)="handleSort('address.city')">City</th>
+    <th (click)="handleSort('address.state')">State</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr>
+    <td><input type="text"
+               [(ngModel)]="filterCriteria.payeeName"
+               (ngModelChange)="handleFilterUpdate()"
+               name="filterPayeeName"
+               class="form-control"></td>
+    <td><input type="text"
+               [(ngModel)]="filterCriteria.address.city"
+               (ngModelChange)="handleFilterUpdate()"
+               name="filterCity"
+               class="form-control"></td>
+    <td><input type="text"
+               [(ngModel)]="filterCriteria.address.state"
+               (ngModelChange)="handleFilterUpdate()"
+               name="filterState"
+               class="form-control"></td>
+  </tr>
+  <tr *ngFor="let payee of payees" (click)="handleClick(payee)">
+    <td>{{ payee.payeeName }}</td>
+    <td>{{ payee.address?.city }}</td>
+    <td>{{ payee.address?.state }}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,16 @@
+<payee-detail
+  [payee]="selectedPayee"
+  (onNextPayee)="handleNext($event)"
+  (onPreviousPayee)="handlePrevious($event)"
+  (goBack)="handleBack()"
+  *ngIf="currentView === PayeesViews.DETAIL"></payee-detail>
+
+<payees-list [payees]="displayPayees"
+             (selectPayee)="handleSelectPayee($event)"
+             (sortPayees)="handleSortPayees($event)"
+             (updateFilter)="handleUpdateFilter($event)"
+             *ngIf="currentView === PayeesViews.LIST"></payees-list>
+<ng-template #spinner *ngIf="PayeesViews.WAITING">
+  <h2>Waiting...</h2>
+  <img src="../../../assets/spinner.gif"/>
+</ng-template>

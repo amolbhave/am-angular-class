@@ -1,0 +1,10 @@
+<select [name]="name"
+        class="form-control"
+        *ngIf="categories && categories.length"
+        [(ngModel)]="selectedCategory"
+        (change)="handleChange(selectedCategory)">
+  <option *ngFor="let category of categories"
+          [value]="category.id">
+    {{ category.categoryName }}
+  </option>
+</select>
