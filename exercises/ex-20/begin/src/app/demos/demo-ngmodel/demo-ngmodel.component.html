@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col">
+    <label for="your-name">Please enter your name: </label>
+    <input type="text"
+           name="personName"
+           id="your-name"
+           [(ngModel)]="yourName"
+    ></div>
+  <div class="col">
+    <!-- Angular supports conditional evaluation of properties with the ? operator -->
+    <p *ngIf="yourName?.length > 2">Nice to meet you {{ yourName }}!</p>
+  </div>
+</div>
