@@ -1,0 +1,21 @@
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+    <th>Payee Name</th>
+    <th>City</th>
+    <th>State</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Add a click event hadler to the table row which fires handleClick,
+       passing it a payee
+
+       Return to payees-manager.component.ts
+        -->
+  <tr *ngFor="let payee of payees">
+    <td>{{ payee.payeeName }}</td>
+    <td>{{ payee.address?.city }}</td>
+    <td>{{ payee.address?.state }}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,22 @@
+<table class="table table-hover table-striped">
+  <thead>
+  <!--
+  Add event handlers to each of the th tags. Fire the handleSort handler, passing
+  it the name of the field to sort on
+
+  Return to payees-manager.component.ts
+  -->
+  <tr>
+    <th (click)="handleSort('payeeName')">Payee Name</th>
+    <th (click)="handleSort('address.city')">City</th>
+    <th (click)="handleSort('address.state')">State</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let payee of payees" (click)="handleClick(payee)">
+    <td>{{ payee.payeeName }}</td>
+    <td>{{ payee.address?.city }}</td>
+    <td>{{ payee.address?.state }}</td>
+  </tr>
+  </tbody>
+</table>

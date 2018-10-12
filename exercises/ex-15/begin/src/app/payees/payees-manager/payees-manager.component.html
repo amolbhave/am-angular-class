@@ -1,0 +1,21 @@
+<!-- Part 1: Change the *ngIf statement in payee-detail to display only if currentView
+     is equal to PayeesViews.DETAIL
+     Do the same for the payees-list component and the ng-template (respectively)
+
+     Then go to payees-list.component.ts
+      -->
+<!--
+<payee-detail
+  [payee]="selectedPayee"
+  (onNextPayee)="handleNext($event)"
+  (onPreviousPayee)="handlePrevious($event)"
+  (goBack)="handleBack()"
+  *ngIf="currentView === PayeesViews.DETAIL"></payee-detail>
+-->
+<payees-list [payees]="payees"
+             (selectPayee)="handleSelectPayee($event)"
+             *ngIf="payees; else spinner"></payees-list>
+<ng-template #spinner>
+  <h2>Waiting...</h2>
+  <img src="../../../assets/spinner.gif"/>
+</ng-template>

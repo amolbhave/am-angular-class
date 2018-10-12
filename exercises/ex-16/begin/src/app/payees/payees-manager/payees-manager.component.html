@@ -1,0 +1,21 @@
+<payee-detail
+  [payee]="selectedPayee"
+  (onNextPayee)="handleNext($event)"
+  (onPreviousPayee)="handlePrevious($event)"
+  (goBack)="handleBack()"
+  *ngIf="currentView === PayeesViews.DETAIL"></payee-detail>
+
+<!--
+Add an event handler for sortPayees here, firing the handleSortPayees function,
+passing it the $event. Update the data binding to use displayPayees instead
+of payees.
+
+Return to payees-manager.component.ts
+-->
+<payees-list [payees]="payees"
+             (selectPayee)="handleSelectPayee($event)"
+             *ngIf="currentView === PayeesViews.LIST"></payees-list>
+<ng-template #spinner *ngIf="PayeesViews.WAITING">
+  <h2>Waiting...</h2>
+  <img src="../../../assets/spinner.gif"/>
+</ng-template>

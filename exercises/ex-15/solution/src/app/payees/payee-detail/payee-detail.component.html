@@ -1,0 +1,33 @@
+<div class="card">
+
+  <div class="card-header" [ngClass]="getCardColor(payee.categoryId)">
+    {{ payee.payeeName }}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" [class.categoryIncome]="payee.categoryId < 100">{{ payee.payeeName }}
+    </li>
+    <li class="list-group-item">{{ payee.category?.categoryName }}</li>
+    <li class="list-group-item">{{ payee.address?.street }}</li>
+
+    <li class="list-group-item">{{ payee.address?.city }},
+      <span [ngStyle]="getStateColor(payee.address?.state)">{{ payee.address?.state }}</span></li>
+  </ul>
+</div>
+<div class="mt-1">
+  <button type="button"
+          (click)="firePrevious()"
+          class="btn btn-primary"
+          [class.disabled]="this.firstPayee">Previous
+  </button>
+  &nbsp;&nbsp;
+  <!-- Add a button, labeled "Go Back", which firest a click event.
+       The handler for the click event is fireBack()
+       Return to payees-manager.component.ts to test your code.
+       -->
+  <button type="button" (click)="fireBack()" class="btn btn-primary">Go Back</button>
+    &nbsp;
+  <button type="button" (click)="fireNext()" class="btn btn-primary" [class.disabled]="this.lastPayee">
+    Next
+  </button>
+</div>
+
