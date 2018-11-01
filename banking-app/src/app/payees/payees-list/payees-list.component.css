@@ -1,0 +1,12 @@
+.sort-none::after {
+  content: " \23EC";
+  visibility: hidden;
+}
+
+.sort-asc::after {
+  content: " \23EC"
+}
+
+.sort-desc::after {
+  content: " \23EB"
+}

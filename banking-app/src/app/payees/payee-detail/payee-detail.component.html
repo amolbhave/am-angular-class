@@ -1,0 +1,14 @@
+<div class="card bg-info" *ngIf="payee; else noPayee">
+  <div class="card-header">{{ payee.payeeName }}</div>
+  <ul class="list-group">
+    <li class="list-group-item">{{ payee.payeeName }}</li>
+    <li class="list-group-item">{{ payee.address?.city }}</li>
+    <li class="list-group-item">{{ payee.address?.state }}</li>
+  </ul>
+</div>
+
+<ng-template #noPayee>
+  <div class="card bg-warning">
+    <div class="card-header">No Payee Found!</div>
+  </div>
+</ng-template>

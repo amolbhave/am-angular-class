@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <label>Payee Name</label>
+      <input
+        [(ngModel)]="searchPayeeName"
+        type="text"
+        name="payee-name"
+        class="form-control">
+    </div>
+  </div>
+</div>
+<div class="row mt-1">
+  <div class="col">
+    <p *ngIf="searchPayeeName.length > 2">You're searching on {{ searchPayeeName }}</p>
+  </div>
+</div>
+<div class="row mt-1">
+  <div class="col">
+    <button class="btn btn-outline-success" (click)="handleSearch()">Search!</button>
+  </div>
+</div>

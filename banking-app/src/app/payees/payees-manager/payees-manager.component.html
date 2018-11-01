@@ -1,0 +1,36 @@
+<ul class="list-inline">
+  <li class="list-inline-item"><span routerLinkActive="badge-danger" class="badge badge-pill"><a routerLinkActive="text-white" routerLink="list">List</a></span></li>
+  <li class="list-inline-item"><span routerLinkActive="badge-danger" class="badge badge-pill"><a routerLinkActive="text-white" routerLink="search">Search</a></span></li>
+  <li class="list-inline-item"><span routerLinkActive="badge-danger" class="badge badge-pill"><a routerLinkActive="text-white" routerLink="add">Add</a></span></li>
+</ul>
+
+<router-outlet></router-outlet>
+
+<!--
+<section [ngClass]="showView(PayeeViews.LIST)">
+  <payees-list
+    (selectPayee)="handleSelectPayee($event)"
+    (sortPayees)="handleSortPayees($event)"
+    [payees]="displayPayees"
+    [sortCriteria]="sortCriteria"
+  ></payees-list>
+</section>
+
+<section>
+  <payee-detail [payee]="selectedPayee" [ngClass]="showView(PayeeViews.DETAIL)"></payee-detail>
+  <!--<payee-detail [payee]="observablePayee | async"></payee-detail>-->
+<!--
+  <div class="row mt-1">
+    <div class="col">
+      <button (click)="handleClick('Previous')" type="button" class="btn btn-primary">&laquo; Previous</button>
+    </div>
+    <div class="col text-center">
+      <button class="btn btn-danger" (click)="handleBack()">Back</button>
+    </div>
+    <div class="col text-right">
+      <button (click)="handleClick('Next')" type="button" class="btn btn-primary">Next &raquo;</button>
+    </div>
+  </div>
+</section>
+-->
+

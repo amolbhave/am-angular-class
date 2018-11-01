@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr class="clickable">
+    <th (click)="handleHeaderClick('payeeName')" [ngClass]="getSortIndicator('payeeName')">Name</th>
+    <th (click)="handleHeaderClick('address.city')" [ngClass]="getSortIndicator('address.city')">City</th>
+    <th (click)="handleHeaderClick('address.state')" [ngClass]="getSortIndicator('address.state')">State</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr (click)="handleClick(payee)"
+      *ngFor="let payee of payees; index as i"
+      [ngClass]="{'table-info': i % 2 === 0, 'table-warning': i % 2 !== 0}">
+
+    <td class="clickable"><a [routerLink]="['../detail', payee.id]">{{ payee.payeeName }}</a></td>
+
+    <td>{{ payee.address?.city }}</td>
+    <td>{{ payee.address?.state }}</td>
+  </tr>
+  </tbody>
+</table>
