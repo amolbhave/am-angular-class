@@ -46,4 +46,5 @@ banking-app/.idea
 #banking-app/src/app/**/*.html
 #banking-app/src/assets
 #!banking-app/src/app/.gitkeep
-banking-app/src/assets/**/*
+banking-app/src/assets/instructions*
+banking-app/src/assets/doc/**/*
