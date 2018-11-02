@@ -48,7 +48,8 @@ export class PayeesListComponent implements OnInit, OnChanges {
 
   ngOnChanges( changes: SimpleChanges ) {
     if ( changes[ 'payees' ] ) {
-      console.log( 'Change! ', !changes[ 'payees' ].isFirstChange() && changes[ 'payees' ].currentValue[ 0 ].payeeName );
+      console.log( 'Change! ',
+        !changes[ 'payees' ].isFirstChange() && changes[ 'payees' ].currentValue.length > 0 && changes[ 'payees' ].currentValue[ 0 ].payeeName );
     }
   }
 

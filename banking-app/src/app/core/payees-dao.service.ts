@@ -47,7 +47,7 @@ export class PayeesDAOService {
     }
 
     return this.client.get<Payee[]>( this.baseUrl, {
-      params: params
+      params: params,
     } )
                .pipe(
                  // If it was just a bad connection, retry twice

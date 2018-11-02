@@ -49,7 +49,7 @@ export class PayeesListRoutedComponent implements OnInit, OnDestroy {
         .subscribe( payees => {
           this.payees = payees;
           this.displayPayees = [ ...payees ];
-        } );
+        }, ( error ) => console.error( 'Error at the PayeesListRouted component.' ) );
   }
 
   ngOnInit() {

@@ -6,12 +6,16 @@
                                      class="badge badge-pill"><a routerLinkActive="text-white" routerLink="search">Search</a></span>
   </li>
   <li class="list-inline-item"><span routerLinkActive="badge-danger"
-                                     class="badge badge-pill"><a routerLinkActive="text-white" routerLink="add">Add</a></span>
+                                     class="badge badge-pill"><a routerLinkActive="text-white" [routerLink]="['add']">Add</a></span>
   </li>
 </ul>
 
 <ul class="list-inline">
-  <li class="list-inline-item"><span class="badge badge-pill"><a [routerLink]="[{outlets: {footerOutlet: ['footer']}}]">Show footer</a></span>
+  <li class="list-inline-item">
+    <span class="badge badge-pill">
+      <!-- [{ outlets: { name_of_outlet: ['path to load for outlet'] }}] -->
+      <a [routerLink]="[{outlets: {footerOutlet: ['footer']}}]">Show footer</a>
+    </span>
   </li>
 </ul>
 
