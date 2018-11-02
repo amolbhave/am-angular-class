@@ -20,13 +20,14 @@ export class PayeeDetailComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngOnInit() {
-    console.log('PayeeDetailComponent.ngOnInit(): ', this.payee);
+    console.log('PayeeDetailComponent.ngOnInit(): ');
     if (!this.payee) {
       this.route.data.subscribe((data: {payee: Payee}) => this.payee = data.payee);
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log( 'PayeeDetailComponent.ngOnChanges()' );
 /*
     console.log('Changed! ', changes);
     console.log( 'OnChanges: this.payee: ', this.payee );

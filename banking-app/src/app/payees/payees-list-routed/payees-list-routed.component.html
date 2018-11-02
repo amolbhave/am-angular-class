@@ -1,19 +1,9 @@
 <div>
   <p>You searched on {{ params | json }}</p>
 </div>
-<section *ngIf="payees.length; else noneFound">
-  <payees-list
-    (selectPayee)="handleSelectPayee($event)"
-    (sortPayees)="handleSortPayees($event)"
-    [payees]="displayPayees"
-    [sortCriteria]="sortCriteria"
-  ></payees-list>
-</section>
-
-<ng-template #noneFound>
-  <section class="card">
-    <div class="card-header bg-danger text-center text-white">
-      <h2>No record found</h2></div>
-  </section>
-</ng-template>
-
+<payees-list
+  (selectPayee)="handleSelectPayee($event)"
+  (sortPayees)="handleSortPayees($event)"
+  [payees]="displayPayees"
+  [sortCriteria]="sortCriteria"
+></payees-list>

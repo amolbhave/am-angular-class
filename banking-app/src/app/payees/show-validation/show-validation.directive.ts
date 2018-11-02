@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Host, HostBinding, Input, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 @Directive( {
@@ -10,14 +10,28 @@ export class ShowValidationDirective implements OnInit {
   @Input( 'showValidation' )
   model: NgModel;
 
-  constructor() { }
+/*
+  @HostBinding('validationMessages')
+  validationMessages;
+*/
+
+  constructor(private el: ElementRef) { }
 
   ngOnInit() {
     console.log( 'on init ran: ', this.model );
-    this.model.valueChanges.subscribe( change => console.log( 'model change: ', change ) );
+    this.model.valueChanges.subscribe( change => {
+      console.log( 'model change: ', change );
+      this.onModelChange();
+    } );
   }
   onModelChange() {
     console.log( 'Directive model: ', this.model );
+    if (this.model.invalid && (this.model.touched || this.model.dirty)) {
+      this.el.nativeElement.style.visibility = 'visible';
+      // this.validationMessages.street = 'Street has problems.';
+    } else {
+      this.el.nativeElement.style.visibility = 'hidden';
+    }
   }
 
 }

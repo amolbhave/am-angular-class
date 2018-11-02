@@ -1,37 +1,27 @@
-<form #payeeForm="ngForm" (ngSubmit)="handleSubmit(payeeForm)">
+<form #peopleForm="ngForm" (ngSubmit)="handleSubmit(peopleForm)">
   <div class="row">
     <div class="col">
       <div class="form-group">
-        <label>Payee Name:</label>
+        <label>First Name:</label>
         <input
           type="text"
-          name="payeeName"
+          name="firstName"
           class="form-control"
           required
           minlength="3"
           ngModel
-          #payeeName>
+          #firstName>
       </div>
       <div class="form-group">
-        <label>Category: </label>
-        <select-categories
-          id="id-category"
-          (pickCategory)="handlePickCategory($event)"
-          name="category"></select-categories>
-      </div>
-      <div class="form-group">
-        <label>Image URL:</label>
-        <input type="text" name="image" class="form-control" ngModel #image>
-      </div>
-      <div class="form-group">
-        <label>Motto:</label>
-        <input type="text" name="motto" class="form-control" ngModel #motto>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="active" ngModel #active>
-        <label class="form-check-label">
-          Active
-        </label>
+        <label>Last Name:</label>
+        <input
+          type="text"
+          name="lastName"
+          class="form-control"
+          required
+          minlength="3"
+          ngModel
+          #lastName>
       </div>
     </div>
     <div class="col">
@@ -40,7 +30,6 @@
         <input type="text" name="address.street" class="form-control"
                required minlength="5"
                ngModel #address_street="ngModel">
-        <div [showValidation]="address_street">The street address is invalid</div>
       </div>
       <div class="form-group">
         <label>City:</label>
@@ -62,13 +51,6 @@
                ngModel #address.zip>
       </div>
 
-    </div>
-  </div>
-  <div class="row mt-1">
-    <div class="col">
-      <hr>
-      <button type="submit" class="btn btn-primary">{{ actionLabel || 'Submit' }}</button>&nbsp;
-      <button type="reset" class="btn btn-primary">Reset</button>
     </div>
   </div>
 </form>

@@ -5,6 +5,12 @@
     <home-navbar></home-navbar>
   </header>
 
+  <div [ngStyle]="{display: loading ? 'none' : 'block'}">
   <router-outlet></router-outlet>
+  </div>
+
+  <div *ngIf="loading">
+    <span class="fas fa-cog fa-3x fa-spin"></span>
+  </div>
 
 </main>

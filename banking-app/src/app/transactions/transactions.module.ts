@@ -8,6 +8,7 @@ import { TransactionDetailComponent } from './transaction-detail/transaction-det
 import { TransactionsSearchComponent } from './transactions-search/transactions-search.component';
 import { TransactionsSearchRoutedComponent } from './transactions-search/transactions-search-routed.component';
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
+import { TransactionsHeaderComponent } from './transactions-header/transactions-header.component';
 
 @NgModule( {
   imports: [
@@ -15,7 +16,7 @@ import { TransactionEditComponent } from './transaction-edit/transaction-edit.co
     TransactionsRoutingModule
   ],
   declarations: [ TransactionsListComponent, TransactionDetailComponent, TransactionsManagerComponent, TransactionEditComponent,
-                  TransactionDetailComponent, TransactionsSearchComponent, TransactionEditComponent, TransactionsSearchRoutedComponent, TransactionsListRoutedComponent ],
+                  TransactionDetailComponent, TransactionsSearchComponent, TransactionEditComponent, TransactionsSearchRoutedComponent, TransactionsListRoutedComponent, TransactionsHeaderComponent ],
   exports: [ TransactionsListComponent, TransactionDetailComponent ]
 } )
 export class TransactionsModule {}

@@ -9,6 +9,8 @@ import { PayeesListRoutedComponent } from './payees-list-routed/payees-list-rout
 import { PayeeFormComponent } from './payee-form/payee-form.component';
 import { PayeesSearchComponent } from './payees-search/payees-search.component';
 import { ShowValidationDirective } from './show-validation/show-validation.directive';
+import { PayeesListResolvedComponent } from './payees-list-resolved/payees-list-resolved.component';
+import { PayeeDetailFooterComponent } from './payee-detail/payee-detail-footer.component';
 
 @NgModule( {
   imports: [
@@ -17,6 +19,8 @@ import { ShowValidationDirective } from './show-validation/show-validation.direc
   ],
   declarations: [ PayeesManagerComponent, PayeeDetailComponent, PayeesListComponent, PayeesListRoutedComponent, PayeeFormComponent,
                   PayeesSearchComponent,
-                  ShowValidationDirective ]
+                  ShowValidationDirective,
+                  PayeesListResolvedComponent,
+                  PayeeDetailFooterComponent ]
 } )
 export class PayeesModule {}

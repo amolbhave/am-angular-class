@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { PayeesModule } from './payees/payees.module';
 import { DemosModule } from './demos/demos.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule( {
   declarations: [
@@ -28,6 +29,7 @@ import { DemosModule } from './demos/demos.module';
     CategoriesModule,
     PayeesModule,
     DemosModule,
+    NgbModule,
     AppRoutingModule,
   ],
   providers: [],

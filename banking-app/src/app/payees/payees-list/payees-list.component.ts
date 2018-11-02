@@ -1,13 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Payee } from '../Payee';
 import { SortCriteria } from '../payees-types';
+import * as _ from 'lodash';
+import { logThis } from '../../../utils';
 
 @Component( {
   selector: 'payees-list',
   templateUrl: './payees-list.component.html',
   styleUrls: [ './payees-list.component.css' ]
 } )
-export class PayeesListComponent implements OnInit {
+export class PayeesListComponent implements OnInit, OnChanges {
 
   @Input()
   payees: Payee[];
@@ -41,6 +43,13 @@ export class PayeesListComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges( changes: SimpleChanges ) {
+    if ( changes[ 'payees' ] ) {
+      console.log( 'Change! ', !changes[ 'payees' ].isFirstChange() && changes[ 'payees' ].currentValue[ 0 ].payeeName );
+    }
   }
 
 }

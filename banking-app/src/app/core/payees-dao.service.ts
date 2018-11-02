@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Payee } from '../payees/Payee';
-import { Observable } from 'rxjs';
-import { SortCriteria } from '../payees/payees-types';
+import { Observable, throwError } from 'rxjs';
+import { SortCriteria, PayeesSearchCriteria } from '../payees/payees-types';
+import { flatten } from 'flat';
+import * as _ from 'lodash';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable( {
   providedIn: 'root'
@@ -14,36 +17,63 @@ export class PayeesDAOService {
   constructor( private client: HttpClient ) { }
 
   get( id: string ): Observable<Payee> {
-    return this.client.get<Payee>( `${this.baseUrl}/${id}` );
+    return this.client.get<Payee>( `${this.baseUrl}/${id}` )
+               .pipe(
+                 // If it was just a bad connection, retry twice
+                 // retry(2),
+                 catchError( this.handleError )
+               );
+  }
+
+  search( criteria?: PayeesSearchCriteria, sortCriteria?: SortCriteria ): Observable<Payee[]> {
+    let params: { [ key: string ]: string | string[] } = {};
+
+    if ( sortCriteria ) {
+      params._sort = sortCriteria.sortField;
+      params._order = sortCriteria.ascending ? 'asc' : 'desc';
+    }
+
+    if ( criteria ) {
+      const flatCriteria = _.omitBy( flatten( criteria ), _.isEmpty );
+      params = { ...params, ...flatCriteria };
+
+      const likeable = [ 'payeeName', 'motto', 'address.street', 'address.city', 'address.state', 'address.zip' ];
+      likeable.forEach( field => {
+        if ( params[ field ] ) {
+          params[ `${field}_like` ] = params[ field ];
+          delete params[ field ];
+        }
+      } );
+    }
+
+    return this.client.get<Payee[]>( this.baseUrl, {
+      params: params
+    } )
+               .pipe(
+                 // If it was just a bad connection, retry twice
+                 // retry(2),
+                 catchError( this.handleError )
+               );
   }
 
   list(): Observable<Payee[]> {
-    return this.client.get<Payee[]>( this.baseUrl );
-  }
-
-  sortedList( fieldName: string, direction?: string ): Observable<Payee[]> {
-    return this.client.get<Payee[]>( this.baseUrl, {
-      params: {
-        _sort: fieldName,
-        _order: direction ? direction : 'asc'
-      }
-    } );
+    return this.search();
   }
 
   listWithCriteria( criteria: SortCriteria ) {
-    return this.client.get<Payee[]>( this.baseUrl, {
-      params: {
-        _sort: criteria.sortField,
-        _order: criteria.ascending ? 'asc' : 'desc'
-      }
-    } );
+    return this.search( null, criteria );
   }
 
-  search( payeeName: string ) {
-    return this.client.get<Payee[]>( this.baseUrl, {
-      params: {
-        payeeName_like: payeeName
-      }
-    } );
+  private handleError( error: HttpErrorResponse ) {
+    console.log( 'Raw error: ', error );
+
+    if ( error.error instanceof ErrorEvent ) {
+      console.error( 'There was a problem with the connection: ', error.error.message );
+    } else {
+      console.error( `The back-end returned status code ${error.status}
+      The body was `, error.error );
+    }
+
+    return throwError( 'FriendlyError: Something went wrong in the DAO. ¯\\_(ツ)_/¯' );
   }
 }

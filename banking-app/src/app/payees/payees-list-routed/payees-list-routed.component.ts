@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { SortCriteria } from '../payees-types';
 import { PayeesDAOService } from '../../core/payees-dao.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { PayeeDetailFooterComponent } from '../payee-detail/payee-detail-footer.component';
 
 @Component( {
   selector: 'payees-list-routed',
@@ -13,8 +14,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class PayeesListRoutedComponent implements OnInit, OnDestroy {
 
   params: Params;
-  payees: Payee[] = [];
-  displayPayees: Payee[] = [];
+  payees: Payee[];
+  displayPayees: Payee[];
   lastSubscription: Subscription;
   sortCriteria: SortCriteria = {
     sortField: '',
@@ -31,12 +32,10 @@ export class PayeesListRoutedComponent implements OnInit, OnDestroy {
   }
 
   handleSelectPayee( payee: Payee ) {
-    console.log( 'handleSelectPayee(): ', payee );
     this.router.navigate( [ 'payees/detail', payee.id ] );
   }
 
   handleSortPayees( sortField: string ) {
-    console.log( 'PayeesManagerComponent.handleSortPayees(): ', sortField );
     if ( this.sortCriteria.sortField === sortField ) {
       this.sortCriteria.ascending = !this.sortCriteria.ascending;
     } else {
@@ -55,17 +54,9 @@ export class PayeesListRoutedComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.queryParams.subscribe( ( params: Params ) => {
-      console.log( `PayeesListRouted: Searching on ${params.payeeName}` );
-
-      if ( params.payeeName ) {
-        this.params = params;
-        this.lastSubscription = this.dao
-                                    .search( params.payeeName )
-                                    .subscribe( payees => this.handleData( payees ) );
-      } else {
-        this.lastSubscription = this.dao.list()
-                                    .subscribe( payees => this.handleData( payees ) );
-      }
+      this.lastSubscription = this.dao
+                                  .search( params )
+                                  .subscribe( payees => this.handleData( payees ) );
     } );
   }
 

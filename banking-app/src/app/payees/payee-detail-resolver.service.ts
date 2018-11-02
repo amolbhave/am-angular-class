@@ -14,7 +14,7 @@ export class PayeeDetailResolverService implements Resolve<Payee> {
 
   resolve( route: ActivatedRouteSnapshot,
            state: RouterStateSnapshot ): Observable<Payee> {
-    console.log( 'resolver', route.params.id );
+    console.log( 'PayeeDetailResolver runs again!' );
     return this.dao
                .get( route.params.id );
   }

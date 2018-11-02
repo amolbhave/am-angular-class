@@ -6,6 +6,9 @@ import { PayeesSearchComponent } from './payees-search/payees-search.component';
 import { PayeeDetailComponent } from './payee-detail/payee-detail.component';
 import { PayeeFormComponent } from './payee-form/payee-form.component';
 import { PayeeDetailResolverService } from './payee-detail-resolver.service';
+import { PayeesListResolvedComponent } from './payees-list-resolved/payees-list-resolved.component';
+import { PayeesResolverService } from './payees-list-resolved/payees-resolver.service';
+import { PayeeDetailFooterComponent } from './payee-detail/payee-detail-footer.component';
 
 const routes: Routes = [
   {
@@ -17,6 +20,14 @@ const routes: Routes = [
         component: PayeesListRoutedComponent
       },
       {
+        path: 'list-resolved',
+        component: PayeesListResolvedComponent,
+        resolve: {
+          payees: PayeesResolverService
+        },
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
+      },
+      {
         path: 'search',
         component: PayeesSearchComponent
       },
@@ -25,7 +36,13 @@ const routes: Routes = [
         component: PayeeDetailComponent,
         resolve: {
           payee: PayeeDetailResolverService
-        }
+        },
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
+      },
+      {
+        path: 'footer',
+        outlet: 'footerOutlet',
+        component: PayeeDetailFooterComponent
       },
       {
         path: 'add',
@@ -38,14 +55,14 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'list'
+        redirectTo: 'search'
       }
     ]
   }
 ];
 
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class PayeesRoutingModule { }
+@NgModule( {
+  imports: [ RouterModule.forChild( routes ) ],
+  exports: [ RouterModule ]
+} )
+export class PayeesRoutingModule {}

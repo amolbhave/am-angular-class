@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component( {
   selector: 'payees-search',
@@ -10,11 +10,14 @@ export class PayeesSearchComponent implements OnInit {
 
   searchPayeeName = '';
 
-  constructor( private router: Router ) { }
+  constructor( private router: Router,
+               private route: ActivatedRoute ) { }
 
-  handleSearch() {
-    console.log( `Searching on ${this.searchPayeeName}` );
-    this.router.navigate( [ 'payees/list' ], {
+  handleSearch( dataSource: string ) {
+    const destination = dataSource === 'dao' ? 'list' : 'list-resolved';
+
+    this.router.navigate( [ `../${destination}` ], {
+      relativeTo: this.route,
       queryParams: {
         payeeName: this.searchPayeeName
       }

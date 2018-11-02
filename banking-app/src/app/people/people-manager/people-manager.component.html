@@ -1,3 +1,19 @@
-<p>
-  people-manager works!
-</p>
+<ul class="list-inline">
+  <li class="list-inline-item"><span routerLinkActive="badge-danger"
+                                     class="badge badge-pill"><a routerLinkActive="text-white"
+                                                                 routerLink="list">List</a></span></li>
+  <li class="list-inline-item"><span routerLinkActive="badge-danger"
+                                     class="badge badge-pill"><a routerLinkActive="text-white" routerLink="search">Search</a></span>
+  </li>
+  <li class="list-inline-item"><span routerLinkActive="badge-danger"
+                                     class="badge badge-pill"><a routerLinkActive="text-white" routerLink="add">Add</a></span>
+  </li>
+</ul>
+
+<div class="row">
+  <div class="col">
+    <!-- The main router outlet -->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

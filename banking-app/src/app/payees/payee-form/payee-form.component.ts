@@ -9,11 +9,11 @@ import { Payee } from '../Payee';
 @Component( {
   selector: 'payee-form',
   templateUrl: './payee-form.component.html',
-  styles: [  ]
+  styles: []
 } )
 export class PayeeFormComponent implements OnInit {
 
-  validationMessages = {};
+  validationMessages: { [ key: string ]: string } = {};
   payeeModel: PayeeForm = {};
   counter = 0;
 
@@ -37,17 +37,23 @@ export class PayeeFormComponent implements OnInit {
   }
 
   handleSubmit( form: NgForm ) {
-    const flatPayee = flatten( this.payee, { delimiter: '_' } );
+    console.log( 'Form: ', form );
+
+    let flatPayee = {};
+    if ( this.payee ) {
+      flatPayee = flatten( this.payee, { delimiter: '_' } );
+    }
     const keys = [ ...Object.keys( form.value ), ...Object.keys( flatPayee ) ];
 
     keys.forEach( ( key: string ) => {
       // Takes care of 'address_city' et al
-      _.set( this.payeeModel, key.split( '_' ), ( form.value[ key ] || this.payee[ key ] ) );
+      _.set( this.payeeModel, key.split( '_' ), ( form.value[ key ] /*|| this.payee[ key ]*/ ) );
     } );
 
     if ( !this.payeeModel.active ) {
       this.payeeModel.active = false;
     }
+
   }
 
   getButtonStyles( model: NgModel ) {

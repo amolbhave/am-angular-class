@@ -5,6 +5,7 @@ import { TransactionDetailComponent } from './transaction-detail/transaction-det
 import { TransactionEditComponent } from './transaction-edit/transaction-edit.component';
 import { TransactionsSearchRoutedComponent } from './transactions-search/transactions-search-routed.component';
 import { TransactionsListRoutedComponent } from './transactions-list/transactions-list-routed.component';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'search',
-        component: TransactionsSearchRoutedComponent
+        component: TransactionsSearchRoutedComponent,
       },
       {
         path: 'list',
@@ -29,7 +30,8 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'search'
+        // redirectTo: 'search'
+        component: PageNotFoundComponent
       }
     ]
   }
